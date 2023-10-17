@@ -1,0 +1,6 @@
+.banner{
+  background:linear-gradient(to top,  rgba(235, 10, 10, 0.377), rgba(0, 0, 0, 0.377)), url('https://segwitz.com/wp-content/uploads/2021/09/why-ecommerce-need-mobile-apps.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}
