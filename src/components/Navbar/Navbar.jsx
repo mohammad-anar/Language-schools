@@ -19,6 +19,34 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to={"/addproducts"}
+          className={({ isActive, isPending }) => {
+            return isPending
+              ? "Pending"
+              : isActive
+              ? "underline text-red-600"
+              : "";
+          }}
+        >
+          Add Products
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/mycart"}
+          className={({ isActive, isPending }) => {
+            return isPending
+              ? "Pending"
+              : isActive
+              ? "underline text-red-600"
+              : "";
+          }}
+        >
+          My Cart
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to={"/signup"}
           className={({ isActive, isPending }) => {
             return isPending
