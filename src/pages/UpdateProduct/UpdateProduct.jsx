@@ -1,46 +1,49 @@
-const AddProducts = () => {
-  const handleAdd = (e) => {
-    e.preventDefault();
-    console.log("add");
+import { useLoaderData } from "react-router-dom";
 
-    const form = e.target;
-    const photo = form.photo.value;
-    const brand = form.brand.value.toLowerCase();
-    const name = form.name.value;
-    const type = form.type.value;
-    const price = form.price.value;
-    const rating = form.rating.value;
-    const description = form.textarea.value;
-    console.log(photo, brand, name, type, price, rating, description);
-
-    if (brand === 'google') {
-      return;
+const UpdateProduct = () => {
+    const loadedData = useLoaderData();
+    const {_id, photo, brand, name, type, price, rating, description} = loadedData;
+    const handleAdd = (e) => {
+        e.preventDefault();
+        console.log("add");
+    
+        const form = e.target;
+        const photo = form.photo.value;
+        const brand = form.brand.value.toLowerCase();
+        const name = form.name.value;
+        const type = form.type.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const description = form.textarea.value;
+    
+        if (brand === 'google') {
+          return;
+        }
+    
+        const product = {
+          photo,
+          brand,
+          name,
+          type,
+          price,
+          rating,
+          description
+        }
+        console.log(product);
+        fetch(`http://localhost:5001/update/${_id}`, {
+            method: 'PUT',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(product)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
-
-    const product = {
-      photo,
-      brand,
-      name,
-      type,
-      price,
-      rating,
-      description
-    }
-    console.log(product);
-
-    fetch('http://localhost:5001/products', {
-      method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify(product)
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-  };
-  return (
-    <div className="mx-auto text-center my-5 sm:w-[90%] p-8">
-      <h3 className="text-4xl mb-5 font-bold">Add Product</h3>
+    return (
+        <div>
+            <div className="mx-auto text-center my-5 sm:w-[90%] p-8">
+      <h3 className="text-4xl mb-5 font-bold">Update Product</h3>
       <p className="text-base text-gray-500 mb-12">
-        You can add products by the folloing form. This is a update form which
+        You can update products by the folloing form. This is a update form which
         update a product on your database
       </p>
       <form onSubmit={handleAdd}>
@@ -53,6 +56,7 @@ const AddProducts = () => {
             <input
               type="text"
               name="photo"
+              defaultValue={photo}
               placeholder="Enter URL"
               className="input input-bordered"
             />
@@ -64,6 +68,7 @@ const AddProducts = () => {
             <input
               type="text"
               name="brand"
+              defaultValue={brand}
               placeholder="Enter brand"
               className="input input-bordered"
             />
@@ -78,6 +83,7 @@ const AddProducts = () => {
             <input
               type="text"
               name="name"
+              defaultValue={name}
               placeholder="Enter name"
               className="input input-bordered w-full"
             />
@@ -89,6 +95,7 @@ const AddProducts = () => {
             <input
               type="text"
               name="type"
+              defaultValue={type}
               placeholder="Enter type"
               className="input input-bordered"
             />
@@ -103,6 +110,7 @@ const AddProducts = () => {
             <input
               type="text"
               name="price"
+              defaultValue={price}
               placeholder="Enter price"
               className="input input-bordered w-full"
             />
@@ -114,6 +122,7 @@ const AddProducts = () => {
             <input
               type="text"
               name="rating"
+              defaultValue={rating}
               placeholder="Enter rating"
               className="input input-bordered w-full"
             />
@@ -126,6 +135,7 @@ const AddProducts = () => {
           <textarea
             className="resize-none p-6 outline-none w-full"
             name="textarea"
+            defaultValue={description}
             placeholder="Enter description"
             id="textarea"
             cols="30"
@@ -136,12 +146,13 @@ const AddProducts = () => {
           <input
             type="submit"
             className="btn hover:border-[#130f40] hover:text-[#130f40] bg-[#130f40] text-white mt-4 w-full"
-            value="Add"
+            value="Update"
           />
         </div>
       </form>
     </div>
-  );
+        </div>
+    );
 };
 
-export default AddProducts;
+export default UpdateProduct;

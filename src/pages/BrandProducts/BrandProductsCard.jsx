@@ -10,7 +10,7 @@ const BrandProductsCard = ({ product }) => {
         </div>
         <div className="p-6 ">
           <div className="flex items-center justify-between mb-2">
-            <p className="block   text-xl antialiased font-medium leading-relaxed text-blue-red-900">
+            <p className="block uppercase  text-xl antialiased font-medium leading-relaxed text-blue-red-900">
             {name.slice(0, 15)} {(name.length > 15) ? "..." : "" }
             </p>
             <p className="block  text-xl  font-medium leading-relaxed text-blue-red-900">
@@ -63,12 +63,14 @@ const BrandProductsCard = ({ product }) => {
               Details
             </button>
           </Link>
+          <Link to={`/updateproduct/${_id}`}>
           <button
-            className=" border border-red-600 px-6 py-2 rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
+            className=" border w-full border-red-600 px-6 py-2 rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
             type="button"
           >
             Update
           </button>
+          </Link>
         </div>
       </div>
     </div>

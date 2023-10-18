@@ -41,7 +41,7 @@ const ProductsDetails = () => {
         </div>
         <div className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="block   text-2xl antialiased font-medium leading-relaxed text-blue-red-900">
+            <p className="block uppercase  text-2xl antialiased font-medium leading-relaxed text-blue-red-900">
               Model: <span className="font-normal"> {name}</span>
             </p>
             <p className="block  text-2xl  font-medium leading-relaxed text-blue-red-900">
