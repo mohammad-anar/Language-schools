@@ -2,12 +2,31 @@ import { useLoaderData } from "react-router-dom";
 
 const ProductsDetails = () => {
   const product = useLoaderData();
-  const { _id, photo, brand, name, type, price, description } = product;
+  const { _id, photo, brand, name, type, price, rating, description } = product;
+  const hanldeAddCart = () => {
+    
+    const addProduct = {
+      photo,
+      brand,
+      name,
+      type,
+      price,
+      rating,
+      description,
+    };
+    fetch('http://localhost:5001/cart', {
+        method: 'POST',
+        headers: {'content-type' : 'application/json'},
+        body:JSON.stringify(addProduct)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+  };
   return (
     <div className="w-[80%] mx-auto py-12">
       <div className="mb-12">
         <h2 className="capitalize text-5xl font-bold text-center mb-3">
-           Product Details
+          Product Details
         </h2>
         <p className="text-center font-bold">
           Priduct id: <span className="font-normal">{_id}</span>
@@ -52,7 +71,6 @@ const ProductsDetails = () => {
                 type="radio"
                 name="rating-6"
                 className="mask mask-star-2 bg-amber-600"
-                checked
               />
               <input
                 type="radio"
@@ -70,6 +88,7 @@ const ProductsDetails = () => {
         </div>
         <div className="p-6 pt-0 flex flex-col gap-4">
           <button
+            onClick={hanldeAddCart}
             className=" border text-xl  hover:border-red-600 px-6 py-3 rounded-lg bg-red-600 hover:bg-transparent text-white hover:text-red-600 duration-300"
             type="button"
           >

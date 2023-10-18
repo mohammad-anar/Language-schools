@@ -40,7 +40,6 @@ const BrandProductsCard = ({ product }) => {
                 type="radio"
                 name="rating-6"
                 className="mask mask-star-2 bg-amber-600"
-                checked
               />
               <input
                 type="radio"
