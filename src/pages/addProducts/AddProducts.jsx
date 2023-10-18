@@ -13,6 +13,10 @@ const AddProducts = () => {
     const description = form.textarea.value;
     console.log(photo, brand, name, type, price, rating, description);
 
+    if (brand === 'google') {
+      return;
+    }
+
     const product = {
       photo,
       brand,
@@ -108,7 +112,7 @@ const AddProducts = () => {
               <span className="label-text text-lg font-bold">Rating</span>
             </label>
             <input
-              type="number"
+              type="text"
               name="rating"
               placeholder="Enter rating"
               className="input input-bordered w-full"

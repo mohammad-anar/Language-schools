@@ -8,7 +8,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const BrandProducts = () => {
   const [products, setProducts] = useState([]);
-  // const [photo, brand, name, type, price, rating, description] = products;
+   
   const { brand } = useParams();
   useEffect(() => {
     fetch(`http://localhost:5001/brandproducts/${brand}`)
@@ -25,9 +25,9 @@ const BrandProducts = () => {
           cancelOnInteraction={false} // should stop playing on user interaction
           interval={6000}
         >
-          <div data-src="https://graphicsfamily.com/wp-content/uploads/edd/2021/07/Shop-Products-Social-Media-Banner-Design-Template-scaled.jpg" />
-          <div data-src="https://graphicsfamily.com/wp-content/uploads/edd/2021/07/Shop-Products-Social-Media-Banner-Design-Template-scaled.jpg" />
-          <div data-src="https://graphicsfamily.com/wp-content/uploads/edd/2021/07/Shop-Products-Social-Media-Banner-Design-Template-scaled.jpg" />
+          <div data-src="https://i.ibb.co/nnXQ0Qn/slider1.jpg" />
+          <div data-src="https://i.ibb.co/K5QKhpV/slider2.jpg" />
+          <div data-src="https://i.ibb.co/fDV6FHH/slider3.jpg" />
         </AutoplaySlider>
       </div>
       {/* brand products */}
@@ -36,7 +36,7 @@ const BrandProducts = () => {
           {brand} Products
         </h2>
         {products.length > 0 ? (
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {products?.map((product) => (
               <BrandProductsCard
                 key={product._id}

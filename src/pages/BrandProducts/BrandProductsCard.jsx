@@ -1,29 +1,31 @@
+
 import PropTypes from 'prop-types';
 const BrandProductsCard = ({product}) => {
+    const {photo, brand, name, type, price} = product;
     return (
         
         <div>
-          <div className="relative border bg-gray-100 flex flex-col shadow-md  rounded-xl bg-clip-border">
+          <div className="relative border bg-white flex flex-col shadow-md  rounded-xl bg-clip-border">
             <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-xl bg-clip-border">
               <img
-                src="https://assets.stickpng.com/images/588524d86f293bbfae451a31.png"
-                className=" max-w-[200px] max-h-[150px] block mx-auto "
+                src={photo}
+                className=" w-[250px] h-[200px] block mx-auto "
               />
             </div>
             <div className="p-6 ">
               <div className="flex items-center justify-between mb-2">
                 <p className="block   text-xl antialiased font-medium leading-relaxed text-blue-red-900">
-                  Model: {product.name}
+                  Model: {name}
                 </p>
                 <p className="block  text-xl  font-medium leading-relaxed text-blue-red-900">
-                  Price: 95.00$
+                  Price: {price}$
                 </p>
               </div>
               <p className="block   text-base  font-medium  text-black ">
-                Brand: <span className="font-normal">Apple</span>
+                Brand: <span className="font-normal uppercase">{brand}</span>
               </p>
               <p className="block  text-base  font-medium  text-black ">
-                Type: <span className="font-normal">Laptop</span>
+                Type: <span className="font-normal">{type}</span>
               </p>
               <div className="flex items-center gap-3 font-medium  text-base mt-3  text-black ">
                 Rating:
@@ -32,6 +34,7 @@ const BrandProductsCard = ({product}) => {
                     type="radio"
                     name="rating-6"
                     className="mask mask-star-2 bg-amber-600"
+                    
                   />
                   <input
                     type="radio"
@@ -42,6 +45,7 @@ const BrandProductsCard = ({product}) => {
                     type="radio"
                     name="rating-6"
                     className="mask mask-star-2 bg-amber-600"
+                    checked
                   />
                   <input
                     type="radio"
