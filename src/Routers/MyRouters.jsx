@@ -3,6 +3,7 @@ import Root from "../components/Root/Root";
 import Home from "../pages/Home";
 import AddProducts from "../pages/addProducts/AddProducts";
 import BrandProducts from "../pages/BrandProducts/BrandProducts";
+import ProductsDetails from "../pages/ProductDetails/ProductsDetails";
 
 const MyRouters = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const MyRouters = createBrowserRouter([
       {
         path: "/brandproducts/:brand",
         element: <BrandProducts></BrandProducts>,
+      },
+      {
+        path: "/productdetails/:id",
+        element: <ProductsDetails></ProductsDetails>,
+        loader: ({params}) =>
+          fetch(
+            `http://localhost:5001/productdetails/${params.id}`
+          ),
       },
     ],
   },

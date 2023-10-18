@@ -1,20 +1,32 @@
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-const BrandProductsCard = ({ product }) => {
-  const { _id, photo, brand, name, type, price } = product;
+import { useLoaderData } from "react-router-dom";
+
+const ProductsDetails = () => {
+  const product = useLoaderData();
+  const { _id, photo, brand, name, type, price, description } = product;
   return (
-    <div>
-      <div className="relative border bg-white flex flex-col shadow-md  rounded-xl bg-clip-border">
-        <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-xl bg-clip-border">
-          <img src={photo} className=" w-[250px] h-[200px] block mx-auto " />
+    <div className="w-[80%] mx-auto py-12">
+      <div className="mb-12">
+        <h2 className="capitalize text-5xl font-bold text-center mb-3">
+           Product Details
+        </h2>
+        <p className="text-center font-bold">
+          Priduct id: <span className="font-normal">{_id}</span>
+        </p>
+      </div>
+      <div className="relative border p-12 px-16 pt-0 bg-white flex flex-col  rounded-lg bg-clip-border">
+        <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-lg bg-clip-border">
+          <img
+            src={photo}
+            className=" w-[500px] h-[300px] md:h-[450px] block mx-auto "
+          />
         </div>
-        <div className="p-6 ">
+        <div className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="block   text-xl antialiased font-medium leading-relaxed text-blue-red-900">
-              {name}
+            <p className="block   text-2xl antialiased font-medium leading-relaxed text-blue-red-900">
+              Model: <span className="font-normal"> {name}</span>
             </p>
-            <p className="block  text-xl  font-medium leading-relaxed text-blue-red-900">
-              Price: {price}$
+            <p className="block  text-2xl  font-medium leading-relaxed text-blue-red-900">
+              Price: <span className="font-normal"> {price}$</span>
             </p>
           </div>
           <p className="block   text-base  font-medium  text-black ">
@@ -54,29 +66,19 @@ const BrandProductsCard = ({ product }) => {
               />
             </div>
           </div>
+          <p className="mt-4">{description}</p>
         </div>
         <div className="p-6 pt-0 flex flex-col gap-4">
-          <Link to={`/productdetails/${_id}`}>
-            <button
-              className=" border border-red-600 px-6 py-2 w-full rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
-              type="button"
-            >
-              Details
-            </button>
-          </Link>
           <button
-            className=" border border-red-600 px-6 py-2 rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
+            className=" border text-xl  hover:border-red-600 px-6 py-3 rounded-lg bg-red-600 hover:bg-transparent text-white hover:text-red-600 duration-300"
             type="button"
           >
-            Update
+            Add to Cart
           </button>
         </div>
       </div>
     </div>
   );
 };
-BrandProductsCard.propTypes = {
-  product: PropTypes.object,
-};
 
-export default BrandProductsCard;
+export default ProductsDetails;
