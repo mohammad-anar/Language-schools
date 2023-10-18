@@ -1,7 +1,9 @@
 const Brands = () => {
   return (
     <div className="w-[90%] mx-auto py-16">
-        <h1 className="text-5xl font-bold mb-12 text-center">All of our Brands </h1>
+      <h1 className="text-4xl font-bold mb-12 text-center">
+        All of our Brands{" "}
+      </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <div className="bg-white p-6 rounded-xl flex flex-col justify-between items-center">
           <img
