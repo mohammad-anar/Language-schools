@@ -1,9 +1,20 @@
+import { useEffect, useState } from "react";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
-
+import { useParams } from "react-router-dom";
+import BrandProductsCard from "./BrandProductsCard";
 const AutoplaySlider = withAutoplay(AwesomeSlider);
+
 const BrandProducts = () => {
+  const [products, setProducts] = useState([]);
+  // const [photo, brand, name, type, price, rating, description] = products;
+  const { brand } = useParams();
+  useEffect(() => {
+    fetch(`http://localhost:5001/brandproducts/${brand}`)
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, [brand]);
   return (
     <div className="h-[90vh]">
       {/* carousel slider  */}
@@ -20,82 +31,24 @@ const BrandProducts = () => {
         </AutoplaySlider>
       </div>
       {/* brand products */}
-      <div className="my-24 w-[90%] mx-auto pb-12 ">
-        <h2 className="text-4xl font-bold text-center my-6 p-8">
-          Brand Products
+      <div className="py-12 w-[90%] mx-auto ">
+        <h2 className="text-4xl capitalize font-bold text-center my-6 p-8">
+          {brand} Products
         </h2>
-        {/* products div  */}
-        <div>
-          <div className="relative border bg-gray-100 flex flex-col shadow-md w-96 rounded-xl bg-clip-border">
-            <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-xl bg-clip-border">
-              <img
-                src="https://assets.stickpng.com/images/588524d86f293bbfae451a31.png"
-                className=" w-[200px] block mx-auto "
-              />
-            </div>
-            <div className="p-6 ">
-              <div className="flex items-center justify-between mb-2">
-                <p className="block   text-xl antialiased font-medium leading-relaxed text-blue-red-900">
-                  Model: KR435d
-                </p>
-                <p className="block  text-xl  font-medium leading-relaxed text-blue-red-900">
-                  Price: 95.00$
-                </p>
-              </div>
-              <p className="block   text-base  font-medium  text-black ">
-                Brand: <span className="font-normal">Apple</span>
-              </p>
-              <p className="block  text-base  font-medium  text-black ">
-                Type: <span className="font-normal">Laptop</span>
-              </p>
-              <p className="flex items-center gap-3 font-medium  text-base mt-3  text-black ">
-              Rating: 
-                <div className="rating rating-sm">
-                  <input
-                    type="radio"
-                    name="rating-6"
-                    className="mask mask-star-2 bg-amber-600"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-6"
-                    className="mask mask-star-2 bg-amber-600"
-                    checked
-                  />
-                  <input
-                    type="radio"
-                    name="rating-6"
-                    className="mask mask-star-2 bg-amber-600"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-6"
-                    className="mask mask-star-2 bg-amber-600"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-6"
-                    className="mask mask-star-2 bg-amber-600"
-                  />
-                </div>
-              </p>
-            </div>
-            <div className="p-6 pt-0 flex flex-col gap-4">
-              <button
-                className=" border border-red-600 px-6 py-2 rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
-                type="button"
-              >
-                Details
-              </button>
-              <button
-                className=" border border-red-600 px-6 py-2 rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
-                type="button"
-              >
-                Update
-              </button>
-            </div>
+        {products.length > 0 ? (
+          <div className="grid grid-cols-3 gap-4">
+            {products?.map((product) => (
+              <BrandProductsCard
+                key={product._id}
+                product={product}
+              ></BrandProductsCard>
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className="flex justify-center items-center min-h-[50vh]">
+            <h2 className="text-xl text-red-600 ">No items available</h2>
+          </div>
+        )}
       </div>
     </div>
   );
