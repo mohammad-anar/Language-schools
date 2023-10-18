@@ -4,8 +4,8 @@ const ProductsDetails = () => {
   const product = useLoaderData();
   const { _id, photo, brand, name, type, price, rating, description } = product;
   const hanldeAddCart = () => {
-    
     const addProduct = {
+      id : _id,
       photo,
       brand,
       name,
@@ -14,13 +14,13 @@ const ProductsDetails = () => {
       rating,
       description,
     };
-    fetch('http://localhost:5001/cart', {
-        method: 'POST',
-        headers: {'content-type' : 'application/json'},
-        body:JSON.stringify(addProduct)
+    fetch("http://localhost:5001/cart", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(addProduct),
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
   return (
     <div className="w-[80%] mx-auto py-12">

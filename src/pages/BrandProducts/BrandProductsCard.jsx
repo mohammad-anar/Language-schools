@@ -11,7 +11,7 @@ const BrandProductsCard = ({ product }) => {
         <div className="p-6 ">
           <div className="flex items-center justify-between mb-2">
             <p className="block   text-xl antialiased font-medium leading-relaxed text-blue-red-900">
-              {name}
+            {name.slice(0, 15)} {(name.length > 15) ? "..." : "" }
             </p>
             <p className="block  text-xl  font-medium leading-relaxed text-blue-red-900">
               Price: {price}$
