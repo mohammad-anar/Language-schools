@@ -14,7 +14,7 @@ const Navbar = () => {
             return isPending
               ? "Pending"
               : isActive
-              ? "underline text-red-600"
+              ? "underline text-[tomato]"
               : "";
           }}
         >
@@ -28,7 +28,7 @@ const Navbar = () => {
             return isPending
               ? "Pending"
               : isActive
-              ? "underline text-red-600"
+              ? "underline text-[tomato]"
               : "";
           }}
         >
@@ -42,7 +42,7 @@ const Navbar = () => {
             return isPending
               ? "Pending"
               : isActive
-              ? "underline text-red-600"
+              ? "underline text-[tomato]"
               : "";
           }}
         >
@@ -107,7 +107,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className=" uppercase text-2xl font-bold">
-            <span className="text-red-600 text-3xl">Digital</span>Store
+            <span className="text-[tomato] text-3xl">Digital</span>Store
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

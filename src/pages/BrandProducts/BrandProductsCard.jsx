@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-const BrandProductsCard = ({ product }) => {
+const BrandProductsCard = ({ product, noUpdate, indx }) => {
   const { _id, photo, brand, name, type, price } = product;
   return (
     <div>
@@ -28,27 +28,27 @@ const BrandProductsCard = ({ product }) => {
             <div className="rating rating-sm">
               <input
                 type="radio"
-                name="rating-6"
+                name={`rating-${Math.random()*50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name="rating-6"
+                name={`rating-${Math.random()*50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name="rating-6"
+                name={`rating-${Math.random()*50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name="rating-6"
+                name={`rating-${Math.random()*50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name="rating-6"
+                name={`rating-${Math.random()*50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
             </div>
@@ -63,7 +63,8 @@ const BrandProductsCard = ({ product }) => {
               Details
             </button>
           </Link>
-          <Link to={`/updateproduct/${_id}`}>
+          {
+            !noUpdate && <Link to={`/updateproduct/${_id}`}>
           <button
             className=" border w-full border-red-600 px-6 py-2 rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
             type="button"
@@ -71,6 +72,7 @@ const BrandProductsCard = ({ product }) => {
             Update
           </button>
           </Link>
+          }
         </div>
       </div>
     </div>
@@ -78,6 +80,8 @@ const BrandProductsCard = ({ product }) => {
 };
 BrandProductsCard.propTypes = {
   product: PropTypes.object,
+  noUpdate: PropTypes.bool,
+  indx: PropTypes.number
 };
 
 export default BrandProductsCard;

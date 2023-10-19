@@ -37,10 +37,11 @@ const BrandProducts = () => {
         </h2>
         {products.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products?.map((product) => (
+            {products?.map((product , indx) => (
               <BrandProductsCard
                 key={product._id}
                 product={product}
+                indx={indx}
               ></BrandProductsCard>
             ))}
           </div>

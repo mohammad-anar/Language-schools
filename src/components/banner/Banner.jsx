@@ -11,7 +11,7 @@ const Banner = () => {
             Explore a wide range of digital products, from software and apps to
             e-books and multimedia content, all at your fingertips.
           </p>
-          <button className="btn btn-md btn-outline text-red-600 hover:bg-transparent border-red-600 hover:border-white">
+          <button className="btn btn-md btn-outline text-[tomato] hover:bg-transparent border-[tomato] hover:border-white">
             Learn more
           </button>
         </div>

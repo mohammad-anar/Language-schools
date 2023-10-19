@@ -9,15 +9,18 @@ import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Error from "../pages/Error/Error";
 
 const MyRouters = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:5001/products')
       },
       {
         path: "/login",
