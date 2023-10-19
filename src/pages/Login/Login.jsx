@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Link } from "react-router-dom";
 const Login = () => {
-    const {signinUser} = useContext(AuthContext);
+    const {signinUser, googleSignin} = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const handleSubmit = e => {
         e.preventDefault();
@@ -16,7 +17,8 @@ const Login = () => {
 
         // sign in user 
         signinUser(email, password)
-        .then(() => {
+        .then((res) => {
+            console.log(res.user);
             toast.success("Log in successfull", {
                 position: "top-center",
                 autoClose: 5000,
@@ -46,11 +48,25 @@ const Login = () => {
     const handleShow = () => {
         setShow(!show);
       }
+    //   google log in 
+      const handleGoogleLogin =() => {
+        googleSignin()
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(err => {
+            console.log(err.message);
+        })
+      }
+    //   twitter login 
+    const handleTwitterLogin = () => {
+        
+    }
   return (
     <div>
       <section className="relative overflow-hidden h-[120vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
-          <div className=" p-12 rounded-lg border-[pink] border text-sm min-w-[300px] md:w-[400px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
+          <div className=" p-12 rounded-lg border-[pink] border text-sm w-[350px]  md:w-[400px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
             <form onSubmit={handleSubmit}>
               <h2 className="text-3xl text-center text-blue-800 mb-6 font-bold">
                 Login
@@ -102,16 +118,17 @@ const Login = () => {
                 Sing in with
               </h2>
               <div className="flex gap-4 mt-5">
-                <button className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button onClick={handleGoogleLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <FcGoogle></FcGoogle> google
                 </button>
-                <button className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button onClick={handleTwitterLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <FaTwitter></FaTwitter> twitter
                 </button>
                 <button className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <BsGithub></BsGithub> github
                 </button>
               </div>
+              <p className="text-base mt-4 text-justify">Do't have an account? Please <Link to={'/signup'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Sign Up</Link></p>
             </div>
           </div>
         </div>

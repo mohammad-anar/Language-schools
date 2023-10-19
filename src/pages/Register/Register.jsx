@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Register = () => {
   const [show, setShow] = useState(false);
   const { createUser } = useContext(AuthContext);
@@ -45,7 +46,8 @@ const Register = () => {
       );
     }
     createUser(email, password)
-      .then(() => {
+      .then((res) => {
+        console.log(res.user);
         toast.success("User successfully created", {
           position: "top-center",
           autoClose: 5000,
@@ -78,6 +80,7 @@ const Register = () => {
           });
       })
       .catch((err) => {
+        console.log(err.message);
         toast.error(err.message , {
             position: "top-center",
             autoClose: 5000,
@@ -95,9 +98,9 @@ const Register = () => {
   };
   return (
     <div>
-      <section className="relative overflow-hidden h-[120vh]">
+      <section className="relative overflow-hidden h-[180vh] md:h-[150vh] xl:h-[130vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
-          <div className=" p-12 rounded-lg border-[pink] border text-sm min-w-[300px] md:w-[400px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
+          <div className=" p-12 rounded-lg border-[pink] border text-sm min-w-[300px] md:w-[500px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
             <form onSubmit={handleSubmit}>
               <h2 className="text-3xl text-center text-blue-800 mb-6 font-bold">
                 Sign Up
@@ -191,17 +194,18 @@ const Register = () => {
               <h2 className="text-base  text-center mt-3 border-b border-blue-800">
                 Sing in with
               </h2>
-              <div className="flex gap-4 mt-5">
-                <button className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+              <div className="flex gap-4 mt-5 flex-col md:flex-row text-center">
+                <button className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <FcGoogle></FcGoogle> google
                 </button>
-                <button className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <FaTwitter></FaTwitter> twitter
                 </button>
-                <button className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <BsGithub></BsGithub> github
                 </button>
               </div>
+              <p className="text-base mt-4">Already have an account? Please <Link to={'/login'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Log In</Link></p>
             </div>
           </div>
         </div>
