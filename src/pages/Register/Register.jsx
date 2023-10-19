@@ -21,6 +21,13 @@ const Register = () => {
     const name = firstname + " " + lastname;
     console.log(name, email, password, photo);
 
+    const user = {
+      name,
+      email,
+      password,
+      photo,
+    };
+
     const isPass = regex.test(password);
     if (!isPass) {
       return toast.warn(
@@ -38,11 +45,40 @@ const Register = () => {
       );
     }
     createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        toast.success(
-          "User successfully created",
-          {
+      .then(() => {
+        toast.success("User successfully created", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        fetch("http://localhost:5001/users", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              toast.success("User added successfully on database", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+            }
+          });
+      })
+      .catch((err) => {
+        toast.error(err.message , {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -51,12 +87,7 @@ const Register = () => {
             draggable: true,
             progress: undefined,
             theme: "light",
-          }
-        );
-        fetch()
-      })
-      .catch((err) => {
-        console.error(err);
+          });
       });
   };
   const handleShow = () => {

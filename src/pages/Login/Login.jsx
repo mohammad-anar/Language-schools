@@ -2,15 +2,46 @@ import { FcGoogle } from "react-icons/fc";
 import { FaTwitter } from "react-icons/fa";
 import { BsFillEyeFill, BsFillEyeSlashFill, BsGithub } from "react-icons/bs";
 import { useState } from "react";
+import { useContext } from "react";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Login = () => {
+    const {signinUser} = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+
+        // sign in user 
+        signinUser(email, password)
+        .then(() => {
+            toast.success("Log in successfull", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+        })
+        .catch(err => {
+            console.log(err.message);
+            toast.error(err.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+        });
+
     }
     const handleShow = () => {
         setShow(!show);
