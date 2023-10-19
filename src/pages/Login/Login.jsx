@@ -8,134 +8,134 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 const Login = () => {
-    const {signinUser, googleSignin, githubSignin, twitterSignin} = useContext(AuthContext);
-    const [show, setShow] = useState(false);
-    const handleSubmit = e => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+  const { signinUser, googleSignin, githubSignin, twitterSignin } =
+    useContext(AuthContext);
+  const [show, setShow] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-        // sign in user 
-        signinUser(email, password)
-        .then((res) => {
-            console.log(res.user);
-            toast.success("Log in successfull", {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-              });
-        })
-        .catch(err => {
-            console.log(err.message);
-            toast.error(err.message, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-              });
+    // sign in user
+    signinUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+        toast.success("Log in successfull", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
         });
-
-    }
-    const handleGoogleLogin = () => {
-      googleSignin()
-        .then(() => {
-          toast.success("Log in successfull", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        })
-        .catch((err) => {
-          toast.error(err.message, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+      })
+      .catch((err) => {
+        console.log(err.message);
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
         });
-    };
-    const handleTwitterLogin = () => {
-      twitterSignin()
-        .then(() => {
-          toast.success("Log in successfull", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        })
-        .catch((err) => {
-          toast.error(err.message, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleSignin()
+      .then(() => {
+        toast.success("Log in successfull", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
         });
-    };
-    const handleGithubLogin = () => {
-      githubSignin()
-        .then(() => {
-          toast.success("Log in successfull", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        })
-        .catch((err) => {
-          toast.error(err.message, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
         });
-    };
-    const handleShow = () => {
-      setShow(!show);
-    }
+      });
+  };
+  const handleTwitterLogin = () => {
+    twitterSignin()
+      .then(() => {
+        toast.success("Log in successfull", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
+  const handleGithubLogin = () => {
+    githubSignin()
+      .then(() => {
+        toast.success("Log in successfull", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
+  const handleShow = () => {
+    setShow(!show);
+  };
   return (
     <div>
-    <Helmet>
-      <title>Ditigalstore-Login</title>
-    </Helmet>
-      <section className="relative overflow-hidden h-[120vh]">
+      <Helmet>
+        <title>Ditigalstore-Login</title>
+      </Helmet>
+      <section className="relative overflow-hidden h-[160vh] md:h-[130vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
           <div className=" p-12 rounded-lg border-[pink] border text-sm w-[350px]  md:w-[400px] lg:w-[500px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
             <form onSubmit={handleSubmit}>
@@ -165,15 +165,22 @@ const Login = () => {
               <div className="flex items-center">
                 <input
                   className=" w-full text-base  bg-transparent text-white placeholder:text-gray-700 rounded-xl px-5 py-2 outline-0  block border border-blue-800"
-                  type={show ? 'text' : "password"}
+                  type={show ? "text" : "password"}
                   placeholder="Enter your pass"
                   required
                   name="password"
                   id="password"
                 />
-                <span className="-ml-8 text-xl font-medium cursor-pointer" onClick={handleShow}>{
-                    !show? <BsFillEyeFill></BsFillEyeFill>: <BsFillEyeSlashFill></BsFillEyeSlashFill>
-                }</span>
+                <span
+                  className="-ml-8 text-xl font-medium cursor-pointer"
+                  onClick={handleShow}
+                >
+                  {!show ? (
+                    <BsFillEyeFill></BsFillEyeFill>
+                  ) : (
+                    <BsFillEyeSlashFill></BsFillEyeSlashFill>
+                  )}
+                </span>
               </div>
               <a className="text-blue-800 underline mt-4 inline-block">
                 Forgotten password?
@@ -191,17 +198,34 @@ const Login = () => {
                 Sing in with
               </h2>
               <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-5">
-                <button onClick={handleGoogleLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="p-2  w-full justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                >
                   <FcGoogle></FcGoogle> google
                 </button>
-                <button onClick={handleTwitterLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button
+                  onClick={handleTwitterLogin}
+                  className="p-2 w-full justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                >
                   <FaTwitter></FaTwitter> twitter
                 </button>
-                <button  onClick={handleGithubLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button
+                  onClick={handleGithubLogin}
+                  className="p-2 w-full justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                >
                   <BsGithub></BsGithub> github
                 </button>
               </div>
-              <p className="text-base text-center mt-4">Do't have an account? Please <Link to={'/signup'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Sign Up</Link></p>
+              <p className="text-base text-center mt-4">
+                Do't have an account? Please{" "}
+                <Link
+                  to={"/signup"}
+                  className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer"
+                >
+                  Sign Up
+                </Link>
+              </p>
             </div>
           </div>
         </div>

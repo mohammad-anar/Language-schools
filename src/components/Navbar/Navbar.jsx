@@ -97,7 +97,7 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-[#130f40] text-white py-5 pr-8 md:px-8">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown z-50">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-6 text-base font-medium z-[1] -ml-2 p-2 shadow bg-[#130f40] rounded-br-xl w-52"
+              className="menu menu-sm py-6 dropdown-content mt-6 text-xl font-medium z-[1] -ml-2 md:-ml-8 p-2 shadow bg-[#130f40] rounded-br-xl w-52"
             >
               {elements}
             </ul>
