@@ -8,7 +8,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 const Login = () => {
-    const {signinUser, googleSignin} = useContext(AuthContext);
+    const {signinUser, googleSignin, githubSignin, twitterSignin} = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const handleSubmit = e => {
         e.preventDefault();
@@ -46,22 +46,89 @@ const Login = () => {
         });
 
     }
-    const handleShow = () => {
-        setShow(!show);
-      }
-    //   google log in 
-      const handleGoogleLogin =() => {
-        googleSignin()
-        .then(result => {
-            console.log(result.user);
+    const handleGoogleLogin = () => {
+      googleSignin()
+        .then(() => {
+          toast.success("Log in successfull", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         })
-        .catch(err => {
-            console.log(err.message);
-        })
-      }
-    //   twitter login 
+        .catch((err) => {
+          toast.error(err.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        });
+    };
     const handleTwitterLogin = () => {
-        
+      twitterSignin()
+        .then(() => {
+          toast.success("Log in successfull", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        })
+        .catch((err) => {
+          toast.error(err.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        });
+    };
+    const handleGithubLogin = () => {
+      githubSignin()
+        .then(() => {
+          toast.success("Log in successfull", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        })
+        .catch((err) => {
+          toast.error(err.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        });
+    };
+    const handleShow = () => {
+      setShow(!show);
     }
   return (
     <div>
@@ -130,7 +197,7 @@ const Login = () => {
                 <button onClick={handleTwitterLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <FaTwitter></FaTwitter> twitter
                 </button>
-                <button className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button  onClick={handleGithubLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <BsGithub></BsGithub> github
                 </button>
               </div>
