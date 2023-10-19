@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 const BrandProductsCard = ({ product, noUpdate }) => {
   const { _id, photo, brand, name, type, price } = product;
   return (
-    <div>
+    <div
+      data-aos="fade-up"
+      data-aos-offset="100"
+      data-aos-delay="80"
+      data-aos-duration="900"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+    >
       <div className="relative border bg-white flex flex-col shadow-md  rounded-xl bg-clip-border">
         <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-xl bg-clip-border">
           <img src={photo} className=" w-[250px] h-[200px] block mx-auto " />
@@ -11,7 +18,7 @@ const BrandProductsCard = ({ product, noUpdate }) => {
         <div className="p-6 ">
           <div className="flex items-center justify-between mb-2">
             <p className="block uppercase  text-xl antialiased font-medium leading-relaxed text-blue-red-900">
-            {name.slice(0, 15)} {(name.length > 15) ? "..." : "" }
+              {name.slice(0, 15)} {name.length > 15 ? "..." : ""}
             </p>
             <p className="block  text-xl  font-medium leading-relaxed text-blue-red-900">
               Price: {price}$
@@ -28,27 +35,27 @@ const BrandProductsCard = ({ product, noUpdate }) => {
             <div className="rating rating-sm">
               <input
                 type="radio"
-                name={`rating-${Math.random()*50}`}
+                name={`rating-${Math.random() * 50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name={`rating-${Math.random()*50}`}
+                name={`rating-${Math.random() * 50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name={`rating-${Math.random()*50}`}
+                name={`rating-${Math.random() * 50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name={`rating-${Math.random()*50}`}
+                name={`rating-${Math.random() * 50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
               <input
                 type="radio"
-                name={`rating-${Math.random()*50}`}
+                name={`rating-${Math.random() * 50}`}
                 className="mask mask-star-2 bg-amber-600"
               />
             </div>
@@ -63,16 +70,16 @@ const BrandProductsCard = ({ product, noUpdate }) => {
               Details
             </button>
           </Link>
-          {
-            !noUpdate && <Link to={`/updateproduct/${_id}`}>
-          <button
-            className=" border w-full border-[tomato] px-6 py-2 rounded-lg hover:bg-[tomato] hover:text-white text-[tomato] duration-300"
-            type="button"
-          >
-            Update
-          </button>
-          </Link>
-          }
+          {!noUpdate && (
+            <Link to={`/updateproduct/${_id}`}>
+              <button
+                className=" border w-full border-[tomato] px-6 py-2 rounded-lg hover:bg-[tomato] hover:text-white text-[tomato] duration-300"
+                type="button"
+              >
+                Update
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

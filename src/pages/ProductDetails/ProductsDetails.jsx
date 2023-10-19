@@ -7,7 +7,7 @@ const ProductsDetails = () => {
   const { _id, photo, brand, name, type, price, rating, description } = product;
   const hanldeAddCart = () => {
     const addProduct = {
-      id : _id,
+      id: _id,
       photo,
       brand,
       name,
@@ -39,27 +39,49 @@ const ProductsDetails = () => {
   };
   return (
     <div className="w-[80%] mx-auto py-12">
-    <Helmet>
-      <title>Ditigalstore-Detail</title>
-    </Helmet>
+      <Helmet>
+        <title>Ditigalstore-Detail</title>
+      </Helmet>
       <div className="mb-12">
-        <h2 className="capitalize text-[tomato] text-5xl font-bold text-center mb-3">
+        <h2
+          data-aos="zoom-out"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          className="capitalize text-[tomato] text-5xl font-bold text-center mb-3"
+        >
           Product Details
         </h2>
-        <p className="text-center font-bold">
+        <p
+          data-aos="flip-right"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          className="text-center font-bold"
+        >
           Priduct id: <span className="font-normal">{_id}</span>
         </p>
       </div>
       <div className="relative border p-12 px-16 pt-0 bg-white flex flex-col  rounded-lg bg-clip-border">
         <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-lg bg-clip-border">
           <img
+            data-aos="flip-right"
+            data-aos-offset="100"
+            data-aos-delay="80"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
             src={photo}
             className=" w-[500px] h-[300px] md:h-[450px] block mx-auto "
           />
         </div>
         <div className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="block uppercase  text-2xl antialiased font-medium leading-relaxed text-blue-red-900">
+            <p  className="block uppercase  text-2xl antialiased font-medium leading-relaxed text-blue-red-900">
               Model: <span className="font-normal"> {name}</span>
             </p>
             <p className="block  text-2xl  font-medium leading-relaxed text-blue-red-900">

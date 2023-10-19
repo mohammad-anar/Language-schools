@@ -7,15 +7,40 @@ const Contact = () => {
     <div className="w-[90%] mx-auto">
       <div>
         <div className="text-center flex items-center justify-center h-full">
-          <div
-          >
-            <h2 className="text-4xl font-bold text-[tomato]">Contact Us</h2>
-            <p className="text-3xl font-bold text-teal-600">on</p>
+          <div>
+            <h2
+              data-aos="zoom-out"
+              data-aos-offset="100"
+              data-aos-delay="80"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
+              data-aos-mirror="true"
+              className="text-4xl font-bold text-[tomato]"
+            >
+              Contact Us
+            </h2>
+            <p
+              data-aos="zoom-in"
+              data-aos-offset="100"
+              data-aos-delay="80"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
+              data-aos-mirror="true"
+              className="text-3xl font-bold text-teal-600"
+            >
+              on
+            </p>
           </div>
         </div>
       </div>
       <div className=" my-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
         <div
+          data-aos="fade-down"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
           className="border border-blue-800 rounded-xl p-6 text-center"
         >
           <FaMapLocationDot className="text-[tomato] text-4xl mx-auto mb-3"></FaMapLocationDot>
@@ -23,6 +48,12 @@ const Contact = () => {
           <p className="text-lg">Wahington, NY 10036, United States</p>
         </div>
         <div
+          data-aos="fade-down"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
           className="border border-blue-800 rounded-xl p-6 text-center"
         >
           <HiOutlineMailOpen className=" text-[tomato] text-4xl mx-auto mb-3"></HiOutlineMailOpen>
@@ -30,6 +61,12 @@ const Contact = () => {
           <p className="text-lg">digitalstore@gmail.com</p>
         </div>
         <div
+          data-aos="fade-down"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
           className="border border-blue-800 rounded-xl p-6 text-center"
         >
           <SlScreenSmartphone className=" text-[tomato] text-4xl mx-auto mb-3"></SlScreenSmartphone>
@@ -39,16 +76,25 @@ const Contact = () => {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-6 my-6 ">
         <div className="h-full">
-        <img
-          className=" order-2 lg:order-1 h-full rounded-xl shadow-lg"
-          src="https://i.ibb.co/3zN7TCx/map.webp"
-          alt="img"
-        />
+          <img
+            data-aos="fade-up-right"
+            data-aos-offset="100"
+            data-aos-delay="80"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
+            className=" order-2 lg:order-1 h-full rounded-xl shadow-lg"
+            src="https://i.ibb.co/3zN7TCx/map.webp"
+            alt="img"
+          />
         </div>
         {/* form  */}
-        <div
-          className="relative flex  flex-col bg-blue-800 order-1 lg:order-2 p-12"
-        >
+        <div data-aos="fade-up-left"
+        data-aos-offset="100"
+        data-aos-delay="80"
+        data-aos-duration="900"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true" className="relative flex  flex-col bg-blue-800 order-1 lg:order-2 p-12">
           <div>
             <h2 className="text-4xl text-[tomato] font-bold b-2">
               Get In Touch
@@ -96,7 +142,9 @@ const Contact = () => {
               rows="2"
               placeholder="Text here"
             ></textarea>
-            <button className="text-xl btn btn-md font-bold hover:bg-transparent hover:text-[tomato] border hover:border-[tomato] border-[tomato] duration-500 text-blue-800 bg-[tomato] mt-4">Send</button>
+            <button className="text-xl btn btn-md font-bold hover:bg-transparent hover:text-[tomato] border hover:border-[tomato] border-[tomato] duration-500 text-blue-800 bg-[tomato] mt-4">
+              Send
+            </button>
           </div>
         </div>
       </div>

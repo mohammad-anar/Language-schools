@@ -42,12 +42,30 @@ const UpdateProduct = () => {
   };
   return (
     <div>
-    <Helmet>
-      <title>Ditigalstore-Update-Product</title>
-    </Helmet>
+      <Helmet>
+        <title>Ditigalstore-Update-Product</title>
+      </Helmet>
       <div className="mx-auto text-center my-5 sm:w-[90%] p-8">
-        <h3 className="text-4xl mb-5 font-bold">Update Product</h3>
-        <p className="text-base text-gray-500 mb-12">
+        <h3
+          data-aos="zoom-out"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          className="text-4xl mb-5 font-bold text-[tomato]"
+        >
+          Update Product
+        </h3>
+        <p
+          data-aos="zoom-in"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          className="text-base text-gray-500 mb-12"
+        >
           You can update products by the folloing form. This is a update form
           which update a product on your database
         </p>
@@ -56,7 +74,9 @@ const UpdateProduct = () => {
           <div className="md:flex items-center gap-5 w-full">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-lg font-bold">Photo URL</span>
+                <span className="label-text text-lg font-bold text-[tomato]">
+                  Photo URL
+                </span>
               </label>
               <input
                 type="text"
@@ -68,7 +88,9 @@ const UpdateProduct = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-lg font-bold">Brand Name</span>
+                <span className="label-text text-lg font-bold text-[tomato]">
+                  Brand Name
+                </span>
               </label>
               <input
                 type="text"
@@ -83,7 +105,7 @@ const UpdateProduct = () => {
           <div className="md:flex items-center gap-5 w-full mt-2">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text text-lg font-bold">
+                <span className="label-text text-lg font-bold text-[tomato]">
                   Product Name
                 </span>
               </label>
@@ -97,7 +119,7 @@ const UpdateProduct = () => {
             </div>
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text text-lg font-bold">
+                <span className="label-text text-lg font-bold text-[tomato]">
                   Product Type
                 </span>
               </label>
@@ -114,7 +136,9 @@ const UpdateProduct = () => {
           <div className="md:flex items-center gap-5 w-full md:mt-2">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text text-lg font-bold">Price</span>
+                <span className="label-text text-lg font-bold text-[tomato]">
+                  Price
+                </span>
               </label>
               <input
                 type="text"
@@ -126,7 +150,9 @@ const UpdateProduct = () => {
             </div>
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text text-lg font-bold">Rating</span>
+                <span className="label-text text-lg font-bold text-[tomato]">
+                  Rating
+                </span>
               </label>
               <input
                 type="text"
@@ -138,7 +164,10 @@ const UpdateProduct = () => {
             </div>
           </div>
           <div className="flex flex-col items-start md:mt-4">
-            <label htmlFor="textarea" className="text-lg font-bold mb-2">
+            <label
+              htmlFor="textarea"
+              className="text-lg text-[tomato] font-bold mb-2"
+            >
               Description
             </label>
             <textarea
@@ -153,8 +182,14 @@ const UpdateProduct = () => {
           </div>
           <div className="">
             <input
+              data-aos="fade-down"
+              data-aos-offset="100"
+              data-aos-delay="80"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
+              data-aos-mirror="true"
               type="submit"
-              className="btn hover:border-[#130f40] hover:text-[#130f40] bg-[#130f40] text-white mt-4 w-full"
+              className="btn hover:border-[tomato] hover:text-[tomato] bg-[tomato] text-white mt-4 w-full"
               value="Update"
             />
           </div>

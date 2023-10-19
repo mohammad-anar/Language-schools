@@ -7,7 +7,12 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const elements = (
     <>
-      <li>
+      <li
+        data-aos="fade-down"
+        data-aos-delay="80"
+        data-aos-duration="700"
+        data-aos-easing="ease-in-out"
+      >
         <NavLink
           to={"/"}
           className={({ isActive, isPending }) => {
@@ -21,7 +26,12 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li>
+      <li
+        data-aos="fade-down"
+        data-aos-delay="80"
+        data-aos-duration="800"
+        data-aos-easing="ease-in-out"
+      >
         <NavLink
           to={"/addproduct"}
           className={({ isActive, isPending }) => {
@@ -35,7 +45,12 @@ const Navbar = () => {
           Add Products
         </NavLink>
       </li>
-      <li>
+      <li
+        data-aos="fade-down"
+        data-aos-delay="80"
+        data-aos-duration="900"
+        data-aos-easing="ease-in-out"
+      >
         <NavLink
           to={"/mycart"}
           className={({ isActive, isPending }) => {
@@ -53,31 +68,31 @@ const Navbar = () => {
   );
   const hanldeLogout = () => {
     logOut()
-    .then(() => {
-      toast.success("Log out successfully", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
+      .then(() => {
+        toast.success("Log out successfully", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
-    })
-    .catch(err => {
-      toast.error(err.message, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    })
-    }
+  };
   return (
     <div>
       <div className="navbar bg-[#130f40] text-white py-5 pr-8 md:px-8">
@@ -106,8 +121,15 @@ const Navbar = () => {
               {elements}
             </ul>
           </div>
-          <a className=" uppercase text-2xl font-bold">
-            <span className="text-[tomato] text-3xl">Digital</span>Store
+          <a
+            data-aos="flip-right"
+            data-aos-delay="80"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-out"
+            className=" uppercase text-2xl font-bold"
+          >
+            <span className="text-[tomato] text-3xl">Digital</span>
+            Store
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -116,34 +138,48 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {
-            user? <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="flex items-center">
-              <img
-                className="w-[40px] rounded-full"
-                src={user?.photoURL}
-                alt="User"
-              />
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-50 relative menu p-4 pt-12 shadow text-center bg-[#130f40] -mr-8 mt-8 rounded-box w-80  text-white"
-            >
-              <div>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="flex items-center">
                 <img
-                  className="w-[60px] rounded-full block mx-auto"
+                  data-aos="flip-left"
+                  data-aos-delay="80"
+                  data-aos-duration="900"
+                  data-aos-easing="ease-in-out"
+                  className="w-[40px] rounded-full"
                   src={user?.photoURL}
                   alt="User"
                 />
-                <h2 className="text-xl font-bold mb-2">{user?.displayName}</h2>
-                <p className="mb-1">{user?.email}</p>
-              </div>
-              <hr />
-              <button onClick={hanldeLogout} className="btn btn-sm mt-4 font-bold cursor-pointer">Log out</button>
-            </ul>
-          </div> :
-          <Link to={'/login'}><button className="font-bold">Log In</button></Link>
-          }
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-50 relative menu p-4 pt-12 shadow text-center bg-[#130f40] -mr-8 mt-8 rounded-box w-80  text-white"
+              >
+                <div>
+                  <img
+                    className="w-[60px] rounded-full block mx-auto"
+                    src={user?.photoURL}
+                    alt="User"
+                  />
+                  <h2 className="text-xl font-bold mb-2">
+                    {user?.displayName}
+                  </h2>
+                  <p className="mb-1">{user?.email}</p>
+                </div>
+                <hr />
+                <button
+                  onClick={hanldeLogout}
+                  className="btn btn-sm mt-4 font-bold cursor-pointer"
+                >
+                  Log out
+                </button>
+              </ul>
+            </div>
+          ) : (
+            <Link to={"/login"}>
+              <button className="font-bold">Log In</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

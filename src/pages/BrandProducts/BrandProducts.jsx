@@ -9,24 +9,26 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const BrandProducts = () => {
   const [products, setProducts] = useState([]);
-   
+
   const { brand } = useParams();
   useEffect(() => {
-    fetch(`https://assignment-10-server-puce-zeta.vercel.app/brandproducts/${brand}`)
+    fetch(
+      `https://assignment-10-server-puce-zeta.vercel.app/brandproducts/${brand}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [brand]);
   return (
     <div className="h-[90vh]">
-    <Helmet>
-      <title>Ditigalstore-Products</title>
-    </Helmet>
+      <Helmet>
+        <title>Ditigalstore-Products</title>
+      </Helmet>
       {/* carousel slider  */}
       <div>
         <AutoplaySlider
           className={"h-[90vh]"}
           play={true}
-          cancelOnInteraction={false} // should stop playing on user interaction
+          cancelOnInteraction={false}
           interval={6000}
         >
           <div data-src="https://i.ibb.co/nnXQ0Qn/slider1.jpg" />
@@ -36,12 +38,20 @@ const BrandProducts = () => {
       </div>
       {/* brand products */}
       <div className="py-12 w-[90%] mx-auto ">
-        <h2 className="text-4xl capitalize font-bold text-center my-6 p-8">
+        <h2
+          data-aos="zoom-out"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          className="text-4xl capitalize font-bold text-center my-6 p-8"
+        >
           {brand} Products
         </h2>
         {products.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products?.map((product ) => (
+            {products?.map((product) => (
               <BrandProductsCard
                 key={product._id}
                 product={product}

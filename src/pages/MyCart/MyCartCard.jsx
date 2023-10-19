@@ -38,10 +38,26 @@ const MyCartCard = ({ product, cartProducts, setAllProducts }) => {
     });
   };
   return (
-    <div>
+    <div
+      data-aos="fade-up"
+      data-aos-offset="100"
+      data-aos-delay="80"
+      data-aos-duration="900"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+    >
       <div className="relative border bg-white flex flex-col shadow-md  rounded-xl bg-clip-border">
         <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-xl bg-clip-border">
-          <img src={photo} className=" w-[250px] h-[200px] block mx-auto " />
+          <img
+            data-aos="flip-right"
+            data-aos-offset="100"
+            data-aos-delay="80"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
+            src={photo}
+            className=" w-[250px] h-[200px] block mx-auto "
+          />
         </div>
         <div className="p-6 ">
           <div className="flex items-center justify-between mb-2">

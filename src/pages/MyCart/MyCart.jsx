@@ -8,22 +8,30 @@ const MyCart = () => {
   const [products, setAllProducts] = useState(cartProducts);
   return (
     <div>
-    <Helmet>
-      <title>Ditigalstore-MyCart</title>
-    </Helmet>
+      <Helmet>
+        <title>Ditigalstore-MyCart</title>
+      </Helmet>
       <div className="py-6 w-[90%] mx-auto ">
-        <h2 className="text-4xl capitalize text-[tomato] font-bold text-center mb-12  p-8">
+        <h2
+          data-aos="zoom-out"
+          data-aos-offset="100"
+          data-aos-delay="80"
+          data-aos-duration="900"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          className="text-4xl capitalize text-[tomato] font-bold text-center mb-12  p-8"
+        >
           All Cart Products
         </h2>
         {cartProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {products?.map((product) => (
-              <MyCartCard 
-              key={product._id}
-               product={product}
-               cartProducts={cartProducts}
-               setAllProducts = {setAllProducts}
-               ></MyCartCard>
+              <MyCartCard
+                key={product._id}
+                product={product}
+                cartProducts={cartProducts}
+                setAllProducts={setAllProducts}
+              ></MyCartCard>
             ))}
           </div>
         ) : (
