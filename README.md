@@ -1,5 +1,5 @@
 ### Hi! There. I am Mohammad Anarul Islam ✋  
-#### I want to describe my project features below -
+#### I describe my project features below -
 
 <h2 style="text-align:center">Projuct Features</h2>  
 
