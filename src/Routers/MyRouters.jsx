@@ -20,25 +20,37 @@ const MyRouters = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('https://assignment-10-server-puce-zeta.vercel.app/products')
+        loader: () =>
+          fetch("https://assignment-10-server-puce-zeta.vercel.app/products"),
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/signup",
-        element: <Register></Register>
+        element: <Register></Register>,
       },
       {
         path: "/addproduct",
-        element: <PrivateRoute> <AddProducts></AddProducts></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddProducts></AddProducts>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateproduct/:id",
-        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <UpdateProduct></UpdateProduct>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`https://assignment-10-server-puce-zeta.vercel.app/updateproduct/${params.id}`),
+          fetch(
+            `https://assignment-10-server-puce-zeta.vercel.app/updateproduct/${params.id}`
+          ),
       },
       {
         path: "/brandproducts/:brand",
@@ -47,14 +59,25 @@ const MyRouters = createBrowserRouter([
 
       {
         path: "/productdetails/:id",
-        element: <PrivateRoute><ProductsDetails></ProductsDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <ProductsDetails></ProductsDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`https://assignment-10-server-puce-zeta.vercel.app/productdetails/${params.id}`),
+          fetch(
+            `https://assignment-10-server-puce-zeta.vercel.app/productdetails/${params.id}`
+          ),
       },
       {
         path: "/mycart",
-        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: () => fetch("https://assignment-10-server-puce-zeta.vercel.app/cart"),
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch("https://assignment-10-server-puce-zeta.vercel.app/cart"),
       },
     ],
   },

@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 const BrandProductsCard = ({ product, noUpdate }) => {
   const { _id, photo, brand, name, type, price } = product;
   return (
-    <div
-      data-aos="fade-up"
-      data-aos-offset="100"
-      data-aos-delay="80"
-      data-aos-duration="900"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-    >
+    <div>
       <div className="relative border bg-white flex flex-col shadow-md  rounded-xl bg-clip-border">
         <div className="relative mx-4 mt-4 p-6 overflow-hidden rounded-xl bg-clip-border">
           <img src={photo} className=" w-[250px] h-[200px] block mx-auto " />
