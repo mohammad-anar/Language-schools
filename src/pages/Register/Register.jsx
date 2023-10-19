@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 const Register = () => {
   const [show, setShow] = useState(false);
-  const { createUser, updateUser, googleSignin } = useContext(AuthContext);
+  const { createUser, updateUser, googleSignin, twitterSignin, githubSignin } =
+    useContext(AuthContext);
   const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+=\-[\]{};:'",.<>/?\\|]).{6,}$/;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +49,7 @@ const Register = () => {
     }
     createUser(email, password)
       .then(() => {
-        updateUser(name, photo)
+        updateUser(name, photo);
         toast.success("User successfully created", {
           position: "top-center",
           autoClose: 5000,
@@ -60,7 +61,7 @@ const Register = () => {
           theme: "light",
         });
         form.reset();
-        fetch("http://localhost:5001/users", {
+        fetch("https://assignment-10-server-puce-zeta.vercel.app/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(user),
@@ -83,35 +84,107 @@ const Register = () => {
       })
       .catch((err) => {
         console.log(err.message);
-        toast.error(err.message , {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
   };
   const handleShow = () => {
     setShow(!show);
   };
-  const handleGoogleLogin =() => {
+  const handleGoogleLogin = () => {
     googleSignin()
-    .then(result => {
-        console.log(result.user);
-    })
-    .catch(err => {
-        console.log(err.message);
-    })
-  }
+      .then((result) => {
+        toast.success("Log in successfull", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
+  const handleTwitterLogin = () => {
+    twitterSignin()
+      .then(() => {
+        toast.success("Log in successfull", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
+  const handleGithubLogin = () => {
+    githubSignin()
+      .then(() => {
+        toast.success("Log in successfull", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
   return (
     <div>
-    <Helmet>
-      <title>Ditigalstore-Register</title>
-    </Helmet>
+      <Helmet>
+        <title>Ditigalstore-Register</title>
+      </Helmet>
       <section className="relative overflow-hidden h-[180vh] md:h-[150vh] xl:h-[130vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
           <div className=" p-12 rounded-lg border-[pink] border text-sm min-w-[300px] md:w-[500px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
@@ -151,7 +224,8 @@ const Register = () => {
                 className="text-blue-800 inline-block pt-5 pb-1 font-bold"
                 htmlFor="lastname"
               >
-                Photo URL <span className="font-normal text-black">(optional)</span>
+                Photo URL{" "}
+                <span className="font-normal text-black">(optional)</span>
               </label>
               <input
                 className=" w-full text-base  bg-transparent text-white rounded-xl px-5 py-2 placeholder:text-gray-700 outline-0 block border border-blue-800"
@@ -213,17 +287,34 @@ const Register = () => {
                 Sing in with
               </h2>
               <div className="flex gap-4 mt-5 flex-col md:flex-row items-center justify-center text-center">
-                <button onClick={handleGoogleLogin} className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                >
                   <FcGoogle></FcGoogle> google
                 </button>
-                <button className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button
+                  onClick={handleTwitterLogin}
+                  className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                >
                   <FaTwitter></FaTwitter> twitter
                 </button>
-                <button className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+                <button
+                  onClick={handleGithubLogin}
+                  className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                >
                   <BsGithub></BsGithub> github
                 </button>
               </div>
-              <p className="text-base text-center mt-4">Already have an account? Please <Link to={'/login'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Log In</Link></p>
+              <p className="text-base text-center mt-4">
+                Already have an account? Please{" "}
+                <Link
+                  to={"/login"}
+                  className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer"
+                >
+                  Log In
+                </Link>
+              </p>
             </div>
           </div>
         </div>

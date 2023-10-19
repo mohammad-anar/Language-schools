@@ -12,7 +12,7 @@ const BrandProducts = () => {
    
   const { brand } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5001/brandproducts/${brand}`)
+    fetch(`https://assignment-10-server-puce-zeta.vercel.app/brandproducts/${brand}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [brand]);

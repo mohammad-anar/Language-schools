@@ -20,7 +20,7 @@ const MyRouters = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5001/products')
+        loader: () => fetch('https://assignment-10-server-puce-zeta.vercel.app/products')
       },
       {
         path: "/login",
@@ -38,7 +38,7 @@ const MyRouters = createBrowserRouter([
         path: "/updateproduct/:id",
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/updateproduct/${params.id}`),
+          fetch(`https://assignment-10-server-puce-zeta.vercel.app/updateproduct/${params.id}`),
       },
       {
         path: "/brandproducts/:brand",
@@ -49,12 +49,12 @@ const MyRouters = createBrowserRouter([
         path: "/productdetails/:id",
         element: <PrivateRoute><ProductsDetails></ProductsDetails></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/productdetails/${params.id}`),
+          fetch(`https://assignment-10-server-puce-zeta.vercel.app/productdetails/${params.id}`),
       },
       {
         path: "/mycart",
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: () => fetch("http://localhost:5001/cart"),
+        loader: () => fetch("https://assignment-10-server-puce-zeta.vercel.app/cart"),
       },
     ],
   },

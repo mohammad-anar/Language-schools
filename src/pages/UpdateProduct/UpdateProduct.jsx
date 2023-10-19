@@ -32,7 +32,7 @@ const UpdateProduct = () => {
       description,
     };
     console.log(product);
-    fetch(`http://localhost:5001/update/${_id}`, {
+    fetch(`https://assignment-10-server-puce-zeta.vercel.app/update/${_id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(product),

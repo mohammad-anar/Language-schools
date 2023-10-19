@@ -16,7 +16,7 @@ const ProductsDetails = () => {
       rating,
       description,
     };
-    fetch("http://localhost:5001/cart", {
+    fetch("https://assignment-10-server-puce-zeta.vercel.app/cart", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(addProduct),
