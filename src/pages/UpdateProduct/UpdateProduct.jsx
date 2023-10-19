@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateProduct = () => {
   const loadedData = useLoaderData();
@@ -7,8 +8,6 @@ const UpdateProduct = () => {
     loadedData;
   const handleAdd = (e) => {
     e.preventDefault();
-    console.log("add");
-
     const form = e.target;
     const photo = form.photo.value;
     const brand = form.brand.value.toLowerCase();
@@ -31,14 +30,24 @@ const UpdateProduct = () => {
       rating,
       description,
     };
-    console.log(product);
     fetch(`https://assignment-10-server-puce-zeta.vercel.app/update/${_id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(product),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then(() => {
+        toast.success("Product update successfully", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
   };
   return (
     <div>

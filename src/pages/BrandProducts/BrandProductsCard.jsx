@@ -87,7 +87,7 @@ const BrandProductsCard = ({ product, noUpdate }) => {
 };
 BrandProductsCard.propTypes = {
   product: PropTypes.object,
-  noUpdate: PropTypes.bool,
+  noUpdate: PropTypes.string,
 };
 
 export default BrandProductsCard;

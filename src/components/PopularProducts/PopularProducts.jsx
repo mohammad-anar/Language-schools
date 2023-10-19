@@ -2,7 +2,6 @@ import BrandProductsCard from "../../pages/BrandProducts/BrandProductsCard";
 import PropTypes from "prop-types";
 const PopularProducts = ({ products }) => {
   const topProducts = products.slice(0, 6);
-  console.log(topProducts.length);
   return (
     <div className="my-6 mb-24 w-[90%] mx-auto">
       <h2
