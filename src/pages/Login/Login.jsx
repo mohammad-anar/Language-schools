@@ -135,7 +135,7 @@ const Login = () => {
       <Helmet>
         <title>Ditigalstore-Login</title>
       </Helmet>
-      <section className="relative overflow-hidden h-[160vh] md:h-[130vh]">
+      <section className="relative overflow-hidden h-[100vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
           <div className=" p-12 rounded-lg border-[pink] border text-sm w-[350px]  md:w-[400px] lg:w-[500px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
             <form onSubmit={handleSubmit}>
@@ -217,8 +217,8 @@ const Login = () => {
                   <BsGithub></BsGithub> github
                 </button>
               </div>
-              <p className="text-base text-center mt-4">
-                Do't have an account? Please{" "}
+              <p className="text-base text-black text-center mt-4">
+                Do't have an account? Please
                 <Link
                   to={"/signup"}
                   className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer"

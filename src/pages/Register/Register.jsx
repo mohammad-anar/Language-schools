@@ -185,7 +185,7 @@ const Register = () => {
       <Helmet>
         <title>Ditigalstore-Register</title>
       </Helmet>
-      <section className="relative overflow-hidden h-[180vh] md:h-[150vh] xl:h-[130vh]">
+      <section className="relative overflow-hidden h-[130vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
           <div className=" p-12 rounded-lg border-[pink] border text-sm min-w-[300px] md:w-[500px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
             <form onSubmit={handleSubmit}>
@@ -289,28 +289,28 @@ const Register = () => {
               <div className="flex gap-4 mt-5 flex-col md:flex-row items-center justify-center text-center">
                 <button
                   onClick={handleGoogleLogin}
-                  className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                  className="p-2 justify-center w-full flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
                 >
                   <FcGoogle></FcGoogle> google
                 </button>
                 <button
                   onClick={handleTwitterLogin}
-                  className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                  className="p-2 justify-center w-full flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
                 >
                   <FaTwitter></FaTwitter> twitter
                 </button>
                 <button
                   onClick={handleGithubLogin}
-                  className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
+                  className="p-2 justify-center w-full flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base"
                 >
                   <BsGithub></BsGithub> github
                 </button>
               </div>
-              <p className="text-base text-center mt-4">
-                Already have an account? Please{" "}
+              <p className="text-base text-center text-black mt-4">
+                Already have an account? Please
                 <Link
                   to={"/login"}
-                  className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer"
+                  className="text-lg text-center font-bold text-blue-800 underline ml-2 cursor-pointer"
                 >
                   Log In
                 </Link>
