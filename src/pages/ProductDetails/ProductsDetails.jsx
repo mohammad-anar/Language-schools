@@ -1,4 +1,6 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProductsDetails = () => {
   const product = useLoaderData();
@@ -20,12 +22,28 @@ const ProductsDetails = () => {
       body: JSON.stringify(addProduct),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Product added successfull", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+      });
   };
   return (
     <div className="w-[80%] mx-auto py-12">
+    <Helmet>
+      <title>Ditigalstore-Detail</title>
+    </Helmet>
       <div className="mb-12">
-        <h2 className="capitalize text-5xl font-bold text-center mb-3">
+        <h2 className="capitalize text-[tomato] text-5xl font-bold text-center mb-3">
           Product Details
         </h2>
         <p className="text-center font-bold">

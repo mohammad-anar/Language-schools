@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-const BrandProductsCard = ({ product, noUpdate, indx }) => {
+const BrandProductsCard = ({ product, noUpdate }) => {
   const { _id, photo, brand, name, type, price } = product;
   return (
     <div>
@@ -57,7 +57,7 @@ const BrandProductsCard = ({ product, noUpdate, indx }) => {
         <div className="p-6 pt-0 flex flex-col gap-4">
           <Link to={`/productdetails/${_id}`}>
             <button
-              className=" border border-red-600 px-6 py-2 w-full rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
+              className=" border border-[tomato] px-6 py-2 w-full rounded-lg hover:bg-[tomato] hover:text-white text-[tomato] duration-300"
               type="button"
             >
               Details
@@ -66,7 +66,7 @@ const BrandProductsCard = ({ product, noUpdate, indx }) => {
           {
             !noUpdate && <Link to={`/updateproduct/${_id}`}>
           <button
-            className=" border w-full border-red-600 px-6 py-2 rounded-lg hover:bg-red-600 hover:text-white text-red-600 duration-300"
+            className=" border w-full border-[tomato] px-6 py-2 rounded-lg hover:bg-[tomato] hover:text-white text-[tomato] duration-300"
             type="button"
           >
             Update
@@ -81,7 +81,6 @@ const BrandProductsCard = ({ product, noUpdate, indx }) => {
 BrandProductsCard.propTypes = {
   product: PropTypes.object,
   noUpdate: PropTypes.bool,
-  indx: PropTypes.number
 };
 
 export default BrandProductsCard;

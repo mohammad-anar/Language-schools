@@ -4,6 +4,7 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
 import { useParams } from "react-router-dom";
 import BrandProductsCard from "./BrandProductsCard";
+import { Helmet } from "react-helmet-async";
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const BrandProducts = () => {
@@ -17,6 +18,9 @@ const BrandProducts = () => {
   }, [brand]);
   return (
     <div className="h-[90vh]">
+    <Helmet>
+      <title>Ditigalstore-Products</title>
+    </Helmet>
       {/* carousel slider  */}
       <div>
         <AutoplaySlider
@@ -37,11 +41,10 @@ const BrandProducts = () => {
         </h2>
         {products.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products?.map((product , indx) => (
+            {products?.map((product ) => (
               <BrandProductsCard
                 key={product._id}
                 product={product}
-                indx={indx}
               ></BrandProductsCard>
             ))}
           </div>

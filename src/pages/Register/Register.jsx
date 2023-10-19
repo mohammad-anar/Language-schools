@@ -7,9 +7,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
   const [show, setShow] = useState(false);
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser, googleSignin } = useContext(AuthContext);
   const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+=\-[\]{};:'",.<>/?\\|]).{6,}$/;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,8 +47,8 @@ const Register = () => {
       );
     }
     createUser(email, password)
-      .then((res) => {
-        console.log(res.user);
+      .then(() => {
+        updateUser(name, photo)
         toast.success("User successfully created", {
           position: "top-center",
           autoClose: 5000,
@@ -58,6 +59,7 @@ const Register = () => {
           progress: undefined,
           theme: "light",
         });
+        form.reset();
         fetch("http://localhost:5001/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -96,8 +98,20 @@ const Register = () => {
   const handleShow = () => {
     setShow(!show);
   };
+  const handleGoogleLogin =() => {
+    googleSignin()
+    .then(result => {
+        console.log(result.user);
+    })
+    .catch(err => {
+        console.log(err.message);
+    })
+  }
   return (
     <div>
+    <Helmet>
+      <title>Ditigalstore-Register</title>
+    </Helmet>
       <section className="relative overflow-hidden h-[180vh] md:h-[150vh] xl:h-[130vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
           <div className=" p-12 rounded-lg border-[pink] border text-sm min-w-[300px] md:w-[500px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
@@ -115,6 +129,7 @@ const Register = () => {
                 className=" w-full text-base  bg-transparent text-white rounded-xl px-5 py-2 placeholder:text-gray-700 outline-0 block border border-blue-800"
                 type="text"
                 placeholder="Enter first name"
+                required
                 name="firstname"
                 id="firstname"
               />
@@ -128,6 +143,7 @@ const Register = () => {
                 className=" w-full text-base  bg-transparent text-white rounded-xl px-5 py-2 placeholder:text-gray-700 outline-0 block border border-blue-800"
                 type="text"
                 placeholder="Enter last name"
+                required
                 name="lastname"
                 id="lastname"
               />
@@ -135,7 +151,7 @@ const Register = () => {
                 className="text-blue-800 inline-block pt-5 pb-1 font-bold"
                 htmlFor="lastname"
               >
-                Photo URL
+                Photo URL <span className="font-normal text-black">(optional)</span>
               </label>
               <input
                 className=" w-full text-base  bg-transparent text-white rounded-xl px-5 py-2 placeholder:text-gray-700 outline-0 block border border-blue-800"
@@ -154,6 +170,7 @@ const Register = () => {
                 className=" w-full text-base text-white bg-transparent rounded-xl px-5 py-2 outline-0  placeholder:text-gray-700 block border border-blue-800"
                 type="email"
                 placeholder="Enter your email"
+                required
                 name="email"
                 id="email"
               />
@@ -168,6 +185,7 @@ const Register = () => {
                   className=" w-full text-base  bg-transparent text-white placeholder:text-gray-700 rounded-xl px-5 py-2 outline-0  block border border-blue-800"
                   type={show ? "text" : "password"}
                   placeholder="Enter your pass"
+                  required
                   name="password"
                   id="password"
                 />
@@ -194,8 +212,8 @@ const Register = () => {
               <h2 className="text-base  text-center mt-3 border-b border-blue-800">
                 Sing in with
               </h2>
-              <div className="flex gap-4 mt-5 flex-col md:flex-row text-center">
-                <button className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
+              <div className="flex gap-4 mt-5 flex-col md:flex-row items-center justify-center text-center">
+                <button onClick={handleGoogleLogin} className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <FcGoogle></FcGoogle> google
                 </button>
                 <button className="p-2 justify-center flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
@@ -205,7 +223,7 @@ const Register = () => {
                   <BsGithub></BsGithub> github
                 </button>
               </div>
-              <p className="text-base mt-4">Already have an account? Please <Link to={'/login'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Log In</Link></p>
+              <p className="text-base text-center mt-4">Already have an account? Please <Link to={'/login'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Log In</Link></p>
             </div>
           </div>
         </div>

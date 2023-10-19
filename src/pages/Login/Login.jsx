@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
     const {signinUser, googleSignin} = useContext(AuthContext);
     const [show, setShow] = useState(false);
@@ -64,9 +65,12 @@ const Login = () => {
     }
   return (
     <div>
+    <Helmet>
+      <title>Ditigalstore-Login</title>
+    </Helmet>
       <section className="relative overflow-hidden h-[120vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
-          <div className=" p-12 rounded-lg border-[pink] border text-sm w-[350px]  md:w-[400px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
+          <div className=" p-12 rounded-lg border-[pink] border text-sm w-[350px]  md:w-[400px] lg:w-[500px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
             <form onSubmit={handleSubmit}>
               <h2 className="text-3xl text-center text-blue-800 mb-6 font-bold">
                 Login
@@ -81,6 +85,7 @@ const Login = () => {
                 className=" w-full text-base text-white bg-transparent rounded-xl px-5 py-2 outline-0  placeholder:text-gray-700 block border border-blue-800"
                 type="email"
                 placeholder="Enter your email"
+                required
                 name="email"
                 id="email"
               />
@@ -95,6 +100,7 @@ const Login = () => {
                   className=" w-full text-base  bg-transparent text-white placeholder:text-gray-700 rounded-xl px-5 py-2 outline-0  block border border-blue-800"
                   type={show ? 'text' : "password"}
                   placeholder="Enter your pass"
+                  required
                   name="password"
                   id="password"
                 />
@@ -117,7 +123,7 @@ const Login = () => {
               <h2 className="text-base  text-center mt-3 border-b border-blue-800">
                 Sing in with
               </h2>
-              <div className="flex gap-4 mt-5">
+              <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-5">
                 <button onClick={handleGoogleLogin} className="p-2 flex items-center text-blue-600 bg-white rounded-lg gap-1 text-base">
                   <FcGoogle></FcGoogle> google
                 </button>
@@ -128,7 +134,7 @@ const Login = () => {
                   <BsGithub></BsGithub> github
                 </button>
               </div>
-              <p className="text-base mt-4 text-justify">Do't have an account? Please <Link to={'/signup'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Sign Up</Link></p>
+              <p className="text-base text-center mt-4">Do't have an account? Please <Link to={'/signup'} className="text-lg font-bold text-blue-800 underline ml-2 cursor-pointer">Sign Up</Link></p>
             </div>
           </div>
         </div>

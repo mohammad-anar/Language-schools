@@ -1,3 +1,6 @@
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
+
 const AddProducts = () => {
   const handleAdd = (e) => {
     e.preventDefault();
@@ -26,7 +29,6 @@ const AddProducts = () => {
       rating,
       description
     }
-    console.log(product);
 
     fetch('http://localhost:5001/products', {
       method: 'POST',
@@ -34,11 +36,25 @@ const AddProducts = () => {
       body: JSON.stringify(product)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(() => {
+      toast.success("Product added successfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    })
   };
   return (
     <div className="mx-auto text-center my-5 sm:w-[90%] p-8">
-      <h3 className="text-4xl mb-5 font-bold">Add Product</h3>
+    <Helmet>
+      <title>Ditigalstore-AddProduct</title>
+    </Helmet>
+      <h3 className="text-4xl mb-5 font-bold text-[tomato]">Add Product</h3>
       <p className="text-base text-gray-500 mb-12">
         You can add products by the folloing form. This is a update form which
         update a product on your database
