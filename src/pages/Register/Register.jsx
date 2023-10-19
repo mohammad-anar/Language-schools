@@ -1,26 +1,70 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaTwitter } from "react-icons/fa";
-import { BsGithub } from "react-icons/bs";
+import { BsFillEyeFill, BsFillEyeSlashFill, BsGithub } from "react-icons/bs";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useState } from "react";
 const Register = () => {
-    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+=\-[\]{};:'",.<>/?\\|]).{6,}$/;
-    const handleSubmit = e => {
-        e.preventDefault();
-        const form = e.target;
-        const firstname = form.firstname.value;
-        const lastname = form.lastname.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const name = firstname + ' ' + lastname
-        console.log(name, email, password);
+  const [show, setShow] = useState(false);
+  const { createUser } = useContext(AuthContext);
+  const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+=\-[\]{};:'",.<>/?\\|]).{6,}$/;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const firstname = form.firstname.value;
+    const lastname = form.lastname.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    const name = firstname + " " + lastname;
+    console.log(name, email, password, photo);
 
-         const isPass = regex.test(password);
-         if(!isPass) {
-            return alert("password must validate")
-         }
+    const isPass = regex.test(password);
+    if (!isPass) {
+      return toast.warn(
+        "Password must have at least six character, one capital letter, and a special character",
+        {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
     }
-    return (
-        <div>
-            <section className="relative overflow-hidden h-[120vh]">
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success(
+          "User successfully created",
+          {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
+        fetch()
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+  const handleShow = () => {
+    setShow(!show);
+  };
+  return (
+    <div>
+      <section className="relative overflow-hidden h-[120vh]">
         <div className="z-10 relative flex flex-col h-full justify-center items-center overflow-hidden">
           <div className=" p-12 rounded-lg border-[pink] border text-sm min-w-[300px] md:w-[400px] max-w-[600px] mx-auto bg-transparent shadow-2xl shadow-green-2 border-l-[pink]">
             <form onSubmit={handleSubmit}>
@@ -55,6 +99,19 @@ const Register = () => {
               />
               <label
                 className="text-blue-800 inline-block pt-5 pb-1 font-bold"
+                htmlFor="lastname"
+              >
+                Photo URL
+              </label>
+              <input
+                className=" w-full text-base  bg-transparent text-white rounded-xl px-5 py-2 placeholder:text-gray-700 outline-0 block border border-blue-800"
+                type="text"
+                placeholder="Enter last name"
+                name="photo"
+                id="photo"
+              />
+              <label
+                className="text-blue-800 inline-block pt-5 pb-1 font-bold"
                 htmlFor="email"
               >
                 Email:
@@ -70,15 +127,27 @@ const Register = () => {
                 className="text-blue-800 inline-block pt-5 pb-1 font-bold "
                 htmlFor="password"
               >
-                PassWord:
+                Password:
               </label>
-              <input
-                className=" w-full text-base  bg-transparent text-white placeholder:text-gray-700 rounded-xl px-5 py-2 outline-0  block border border-blue-800"
-                type="password"
-                placeholder="Enter your pass"
-                name="password"
-                id="password"
-              />
+              <div className="flex items-center">
+                <input
+                  className=" w-full text-base  bg-transparent text-white placeholder:text-gray-700 rounded-xl px-5 py-2 outline-0  block border border-blue-800"
+                  type={show ? "text" : "password"}
+                  placeholder="Enter your pass"
+                  name="password"
+                  id="password"
+                />
+                <span
+                  className="-ml-8 text-xl font-medium cursor-pointer"
+                  onClick={handleShow}
+                >
+                  {!show ? (
+                    <BsFillEyeFill></BsFillEyeFill>
+                  ) : (
+                    <BsFillEyeSlashFill></BsFillEyeSlashFill>
+                  )}
+                </span>
+              </div>
               <div className="flex flex-col">
                 <input
                   className="text-lg bg-blue-800 text-white font-bold border rounded-lg p-1 border-blue-800 mt-3 hover:text-white hover:border-white"
@@ -112,8 +181,8 @@ const Register = () => {
         <div className="color blur-[180px] w-[300px] h-[300px] bg-[#b91e9f] relative top-[50%] left-[50%] "></div>
         <div className="color blur-[200px] w-[300px] h-[300px] bg-pink-500 absolute bottom-[0px] right-[0px]"></div>
       </section>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Register;

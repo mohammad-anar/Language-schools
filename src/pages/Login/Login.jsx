@@ -1,7 +1,9 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaTwitter } from "react-icons/fa";
-import { BsGithub } from "react-icons/bs";
+import { BsFillEyeFill, BsFillEyeSlashFill, BsGithub } from "react-icons/bs";
+import { useState } from "react";
 const Login = () => {
+    const [show, setShow] = useState(false);
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
@@ -10,6 +12,9 @@ const Login = () => {
         const password = form.password.value;
         console.log(name, email, password);
     }
+    const handleShow = () => {
+        setShow(!show);
+      }
   return (
     <div>
       <section className="relative overflow-hidden h-[120vh]">
@@ -38,13 +43,18 @@ const Login = () => {
               >
                 PassWord:
               </label>
-              <input
-                className=" w-full text-base  bg-transparent text-white placeholder:text-gray-700 rounded-xl px-5 py-2 outline-0  block border border-blue-800"
-                type="password"
-                placeholder="Enter your pass"
-                name="password"
-                id="password"
-              />
+              <div className="flex items-center">
+                <input
+                  className=" w-full text-base  bg-transparent text-white placeholder:text-gray-700 rounded-xl px-5 py-2 outline-0  block border border-blue-800"
+                  type={show ? 'text' : "password"}
+                  placeholder="Enter your pass"
+                  name="password"
+                  id="password"
+                />
+                <span className="-ml-8 text-xl font-medium cursor-pointer" onClick={handleShow}>{
+                    !show? <BsFillEyeFill></BsFillEyeFill>: <BsFillEyeSlashFill></BsFillEyeSlashFill>
+                }</span>
+              </div>
               <a className="text-blue-800 underline mt-4 inline-block">
                 Forgotten password?
               </a>
