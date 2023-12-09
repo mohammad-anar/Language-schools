@@ -264,7 +264,7 @@ const Register = () => {
                   id="password"
                 />
                 <span
-                  className="-ml-8 text-xl font-medium cursor-pointer"
+                  className="-ml-8 text-xl text-black font-medium cursor-pointer"
                   onClick={handleShow}
                 >
                   {!show ? (
